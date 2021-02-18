@@ -1,0 +1,5 @@
+package com.valuemomentum.training.junit;
+
+public class JUnitMessage {
+
+}

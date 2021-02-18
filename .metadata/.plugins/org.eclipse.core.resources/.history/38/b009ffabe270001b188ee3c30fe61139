@@ -1,0 +1,41 @@
+package com.valuemomentum.training.jdbcDemo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class DeleteDemo {
+
+	public static void main(String[] args) {
+		 Connection con;
+	        Statement stmt;
+	        ResultSet rs;
+	        int cnt=1;
+	        try {
+	            //register JDBC driver
+	            Class.forName("com.mysql.cj.jdbc.Driver");
+	            
+	            //Open a connection
+	            System.out.println("Connecting to database...");
+	            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mysqljdbc","root","Bidi@1234");
+	            
+	            String sql= "Delete from candidates where rtrim(last_name) like\'y\';";
+	            System.out.println(" ");
+	            stmt=con.createStatement();
+	            cnt= stmt.executeUpdate(sql);
+	            
+	            if(cnt>0)
+	            {
+	            	System.out.println("Record deleted successfully");
+	            }
+	            con.close();
+	        }
+	        catch(Exception ce) {
+                System.out.println(ce);
+            }
+               
+	
+
+}
+}
